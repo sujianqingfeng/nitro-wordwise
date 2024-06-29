@@ -20,5 +20,6 @@
 	},
 	"editor.codeActionsOnSave": {
 		"quickfix.biome": "explicit"
-	}
+	},
+	"cSpell.words": ["biomejs", "nitropack", "SUPABASE"]
 }

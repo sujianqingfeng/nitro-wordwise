@@ -1,13 +1,16 @@
 {
-  "private": true,
-  "scripts": {
-    "build": "nitro build",
-    "dev": "nitro dev",
-    "prepare": "nitro prepare",
-    "preview": "node .output/server/index.mjs"
-  },
-  "devDependencies": {
-    "@biomejs/biome": "^1.8.3",
-    "nitropack": "latest"
-  }
+	"private": true,
+	"scripts": {
+		"build": "nitro build",
+		"dev": "nitro dev",
+		"prepare": "nitro prepare",
+		"preview": "node .output/server/index.mjs"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^1.8.3",
+		"nitropack": "npm:nitropack-nightly@latest"
+	},
+	"dependencies": {
+		"@supabase/supabase-js": "^2.44.2"
+	}
 }
