@@ -1,11 +1,11 @@
-import { useAuth } from "~/utils/auth"
+import { useAuth } from "~/composables/auth"
 
-export default defineEventHandler((e) => {
-	const user = useAuth()
+export default defineEventHandler(() => {
+	const { id, email, user_metadata } = useAuth()
 
 	return createBaseResponse({
-		id: user.id,
-		email: user.email,
-		name: user.user_metadata.name,
+		id,
+		email,
+		name: user_metadata.name,
 	})
 })

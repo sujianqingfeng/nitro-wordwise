@@ -21,5 +21,17 @@
 	"editor.codeActionsOnSave": {
 		"quickfix.biome": "explicit"
 	},
-	"cSpell.words": ["biomejs", "nitropack", "SUPABASE"]
+	"cSpell.words": [
+		"biomejs",
+		"composables",
+		"keyfrom",
+		"nitropack",
+		"SUPABASE",
+		"ukphone",
+		"ukspeech",
+		"usphone",
+		"usspeech",
+		"webdict",
+		"youdao"
+	]
 }
