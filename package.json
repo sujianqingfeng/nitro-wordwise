@@ -1,25 +1,26 @@
 {
-  "private": true,
-  "scripts": {
-    "build": "nitro build",
-    "dev": "nitro dev",
-    "prepare": "nitro prepare",
-    "preview": "node .output/server/index.mjs",
-    "generate": "drizzle-kit generate:pg",
-    "migrate": "drizzle-kit push:pg",
-    "migrate:prod": "drizzle-kit push:pg --config drizzle.prod.config.ts",
-    "studio": "drizzle-kit studio",
-    "dev:db": "sudo docker-compose up"
-  },
-  "devDependencies": {
-    "@biomejs/biome": "^1.8.3",
-    "drizzle-kit": "^0.22.8",
-    "nitropack": "npm:nitropack-nightly@latest"
-  },
-  "dependencies": {
-    "@supabase/supabase-js": "^2.44.2",
-    "drizzle-orm": "^0.31.2",
-    "postgres": "^3.4.4",
-    "zod": "^3.23.8"
-  }
+	"private": true,
+	"scripts": {
+		"build": "nitro build",
+		"dev": "nitro dev",
+		"prepare": "nitro prepare",
+		"preview": "node .output/server/index.mjs",
+		"generate": "drizzle-kit generate",
+		"migrate": "drizzle-kit push",
+		"migrate:prod": "drizzle-kit push:pg --config drizzle.prod.config.ts",
+		"studio": "drizzle-kit studio",
+		"dev:db": "sudo docker-compose up"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^1.8.3",
+		"drizzle-kit": "^0.22.8",
+		"nitropack": "^2.9.7"
+	},
+	"dependencies": {
+		"@supabase/supabase-js": "^2.44.2",
+		"drizzle-orm": "^0.31.2",
+		"drizzle-zod": "^0.5.1",
+		"postgres": "^3.4.4",
+		"zod": "^3.23.8"
+	}
 }

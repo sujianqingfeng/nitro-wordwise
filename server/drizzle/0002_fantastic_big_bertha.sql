@@ -1,0 +1,1 @@
+ALTER TABLE "translators" ALTER COLUMN "config" SET NOT NULL;

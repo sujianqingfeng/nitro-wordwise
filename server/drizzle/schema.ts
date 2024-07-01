@@ -18,20 +18,20 @@ export const profiles = pgTable("profiles", {
 	createAt,
 })
 
+export type TranslatorDeepLConfig = { deepLKey: string }
 export const translatorEnum = pgEnum("translator", ["deepL"])
 export const translators = pgTable("translators", {
 	id: defaultId,
-	translator: translatorEnum(""),
+	translator: translatorEnum("").notNull(),
 	invalidate: boolean("invalidate").default(false),
-	config: json("config").$type<{ [key: string]: string }>(),
-
+	config: json("config").notNull().$type<TranslatorDeepLConfig>(),
 	profileId: uuid("profile_id").notNull(),
 })
 
 export const aiEngineEnum = pgEnum("engine", ["deepSeek", "openAI"])
 export const aiEngines = pgTable("ai-engines", {
 	id: defaultId,
-	engine: aiEngineEnum(""),
+	engine: aiEngineEnum("").notNull(),
 	invalidate: boolean("invalidate").default(false),
 	config: json("config").$type<{ [key: string]: string }>(),
 	profileId: uuid("profile_id").notNull(),
@@ -53,6 +53,17 @@ export const dictionary = pgTable("dictionary", {
 
 	prototypeId: uuid("prototype_id"),
 	formName: varchar("form_name", { length: 10 }),
+
+	createAt,
+})
+
+// words
+export const words = pgTable("words", {
+	id: defaultId,
+	word: varchar("word", { length: 20 }).unique(),
+	simpleTranslation: varchar("simple_translate", { length: 100 }),
+
+	userId: uuid("user_id").notNull(),
 
 	createAt,
 })

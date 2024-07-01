@@ -3,8 +3,6 @@ import supabase from "~/lib/supabase"
 import { createBaseResponse } from "~/utils/response"
 
 export default defineEventHandler(async (e) => {
-	const SITE_URL = process.env.NITRO_SITE_URL
-
 	const provider = getRouterParam(e, "provider") as Provider
 
 	if (!provider) {
