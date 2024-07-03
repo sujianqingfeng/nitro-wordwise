@@ -60,7 +60,7 @@ export const dictionary = pgTable("dictionary", {
 // words
 export const words = pgTable("words", {
 	id: defaultId,
-	word: varchar("word", { length: 20 }).unique(),
+	word: varchar("word", { length: 20 }).unique().notNull(),
 	simpleTranslation: varchar("simple_translate", { length: 100 }),
 
 	userId: uuid("user_id").notNull(),
