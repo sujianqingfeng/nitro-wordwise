@@ -7,11 +7,11 @@ export default defineEventHandler(async (e) => {
 	if (!WHITE_LIST.some((s) => pathname.startsWith(s))) {
 		const authorization = getHeader(e, "Authorization")
 		if (!authorization) {
-			throw createError("No authorization header")
+			throw createError("No authorization")
 		}
 		const token = authorization.split(" ")[1]
 		if (!token) {
-			throw createError("No token provided")
+			throw createError("No authorization")
 		}
 		const { data, error } = await supabase.auth.getUser(token)
 		if (error) {

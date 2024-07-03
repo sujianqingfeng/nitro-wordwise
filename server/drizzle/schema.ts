@@ -40,7 +40,7 @@ export const aiEngines = pgTable("ai-engines", {
 // dictionary
 export const dictionary = pgTable("dictionary", {
 	id: defaultId,
-	word: varchar("word", { length: 20 }).unique(),
+	word: varchar("word", { length: 20 }).unique().notNull(),
 	sw: varchar("sw", { length: 20 }),
 	ukPhonetic: varchar("uk_phonetic", { length: 30 }),
 	usPhonetic: varchar("us_phonetic", { length: 30 }),

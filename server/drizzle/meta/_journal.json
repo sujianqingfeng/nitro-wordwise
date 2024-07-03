@@ -29,6 +29,13 @@
       "when": 1720003679545,
       "tag": "0003_minor_wilson_fisk",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1720017297572,
+      "tag": "0004_optimal_jack_flag",
+      "breakpoints": true
     }
   ]
 }

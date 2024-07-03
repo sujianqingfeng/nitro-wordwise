@@ -1,0 +1,1 @@
+ALTER TABLE "dictionary" ALTER COLUMN "word" SET NOT NULL;
