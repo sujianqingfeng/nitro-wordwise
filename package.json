@@ -9,15 +9,20 @@
     "migrate": "drizzle-kit push",
     "migrate:prod": "drizzle-kit push:pg --config drizzle.prod.config.ts",
     "studio": "drizzle-kit studio",
-    "dev:db": "sudo docker-compose up"
+    "dev:db": "sudo docker-compose up",
+    "test": "bun test"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.8.3",
+    "@types/bun": "^1.1.6",
     "drizzle-kit": "^0.22.8",
     "nitropack": "^2.9.7"
   },
   "dependencies": {
+    "@ai-sdk/google": "^0.0.24",
+    "@ai-sdk/openai": "^0.0.34",
     "@supabase/supabase-js": "^2.44.2",
+    "ai": "^3.2.16",
     "consola": "^3.2.3",
     "drizzle-orm": "^0.31.2",
     "drizzle-zod": "^0.5.1",

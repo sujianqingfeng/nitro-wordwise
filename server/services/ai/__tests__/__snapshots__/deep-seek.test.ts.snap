@@ -1,0 +1,40 @@
+// Bun Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`deep-seek generate 1`] = `
+"### 分析
+- 关键词组1:
+  - 词组：code-first automation platform
+  - 释义：一种以代码为核心的自动化平台，强调从代码开始构建自动化流程。
+- 关键词组2:
+  - 词组：seamlessly create and integrate
+  - 释义：无缝地创建和集成，指过程流畅且不显眼。
+- 关键词组3:
+  - 词组：custom JavaScript logic
+  - 释义：定制的JavaScript逻辑，指根据特定需求编写的JavaScript代码。
+- 关键词组4:
+  - 词组：extend your tools
+  - 释义：扩展你的工具，指增加工具的功能或能力。
+
+### 译文初稿
+以代码优先的自动化平台，能够无缝地创建和集成定制的JavaScript逻辑到任何系统中，使你轻松扩展你的工具。
+
+### 校对
+- 校对意见1:
+  - 原文：code-first automation platform
+  - 译文：以代码优先的自动化平台
+  - 问题：“以代码优先”表达略显生硬，不够自然。
+  - 建议：改为“代码驱动的自动化平台”。
+- 校对意见2:
+  - 原文：seamlessly create and integrate
+  - 译文：能够无缝地创建和集成
+  - 问题：“能够”多余，直接用“无缝地”即可。
+  - 建议：去掉“能够”。
+- 校对意见3:
+  - 原文：extend your tools
+  - 译文：使你轻松扩展你的工具
+  - 问题：“使你轻松”略显冗余，直接表达“扩展工具”即可。
+  - 建议：简化为“扩展工具”。
+
+### 译文终稿
+代码驱动的自动化平台，无缝地创建和集成定制的JavaScript逻辑到任何系统中，轻松扩展工具。"
+`;

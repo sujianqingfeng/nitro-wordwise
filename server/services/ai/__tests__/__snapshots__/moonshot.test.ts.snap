@@ -1,0 +1,51 @@
+// Bun Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`moonshot generate 1`] = `
+"### 分析
+- code-first:
+  - 词组：code-first
+  - 释义：以代码为中心的开发方式，即先编写代码，再根据代码生成其他内容（如数据库模式、API文档等）。
+
+- automation platform:
+  - 词组：automation platform
+  - 释义：自动化平台，指的是一个可以自动化执行任务的软件系统。
+
+- seamlessly:
+  - 词组：seamlessly
+  - 释义：无缝地，指在两个或多个部分之间没有明显的界限或中断。
+
+- create and integrate:
+  - 词组：create and integrate
+  - 释义：创建并集成，指开发新的内容或功能，并将其整合到现有的系统中。
+
+- custom JavaScript logic:
+  - 词组：custom JavaScript logic
+  - 释义：自定义的JavaScript逻辑，指根据特定需求编写的JavaScript代码。
+
+- any system:
+  - 词组：any system
+  - 释义：任何系统，指不限制于特定类型的系统或平台。
+
+- easily extend:
+  - 词组：easily extend
+  - 释义：容易扩展，指可以方便地增加新功能或修改现有功能。
+
+### 译文初稿
+这是一个以代码为中心的自动化平台，可以无缝地创建并集成自定义的JavaScript逻辑到任何系统中，让你轻松扩展你的工具。
+
+### 校对
+- 校对意见1:
+  - 原文：code-first
+  - 译文：以代码为中心的
+  - 问题：翻译较为生硬，没有很好地传达“以代码为中心”的开发方式的特点。
+  - 建议：可以改为“以代码驱动的”，以更自然地表达“code-first”的含义。
+
+- 校对意见2:
+  - 原文：easily extend
+  - 译文：让你轻松扩展你的工具
+  - 问题：这里的“工具”可能不够准确，原文中的“tools”可能指的是更广泛的应用或系统。
+  - 建议：可以改为“让你轻松扩展你的应用或系统”。
+
+### 译文终稿
+这是一个以代码驱动的自动化平台，可以无缝地创建并集成自定义的JavaScript逻辑到任何系统中，让你轻松扩展你的应用或系统。"
+`;
