@@ -6,7 +6,7 @@ export function useZodValidQuery<T = any>(schema: ZodType<T>) {
 
 	const { error, data } = schema.safeParse(query)
 	if (error) {
-		throw createError(error.errors[0].message)
+		throw createError(error.flatten().fieldErrors)
 	}
 
 	return { data }
@@ -18,7 +18,7 @@ export async function useZodValidBody<T = any>(schema: ZodType<T>) {
 
 	const { error, data } = schema.safeParse(body)
 	if (error) {
-		throw createError(error.errors[0].message)
+		throw createError(error.flatten().fieldErrors)
 	}
 
 	return { data }

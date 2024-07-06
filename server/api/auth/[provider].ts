@@ -1,6 +1,5 @@
 import type { Provider } from "@supabase/supabase-js"
 import supabase from "~/lib/supabase"
-import { createBaseResponse } from "~/utils/response"
 
 export default defineEventHandler(async (e) => {
 	const provider = getRouterParam(e, "provider") as Provider
@@ -9,16 +8,16 @@ export default defineEventHandler(async (e) => {
 		throw createError("No provider specified")
 	}
 
-	const { redirectTo } = getQuery(e)
+	const { redirectUrl } = getQuery(e)
 
-	if (!redirectTo || typeof redirectTo !== "string") {
+	if (!redirectUrl || typeof redirectUrl !== "string") {
 		throw createError("No redirect URL specified")
 	}
 
 	const { data, error } = await supabase.auth.signInWithOAuth({
 		provider,
 		options: {
-			redirectTo,
+			redirectTo: redirectUrl,
 		},
 	})
 
@@ -26,5 +25,5 @@ export default defineEventHandler(async (e) => {
 		throw createError(error.message)
 	}
 
-	return createBaseResponse(data.url)
+	return sendRedirect(e, data.url)
 })
