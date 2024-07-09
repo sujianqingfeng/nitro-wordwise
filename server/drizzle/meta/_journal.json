@@ -5,36 +5,8 @@
     {
       "idx": 0,
       "version": "7",
-      "when": 1719837133415,
-      "tag": "0000_messy_wong",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "7",
-      "when": 1719841998962,
-      "tag": "0001_gigantic_supernaut",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "7",
-      "when": 1719842442275,
-      "tag": "0002_fantastic_big_bertha",
-      "breakpoints": true
-    },
-    {
-      "idx": 3,
-      "version": "7",
-      "when": 1720003679545,
-      "tag": "0003_minor_wilson_fisk",
-      "breakpoints": true
-    },
-    {
-      "idx": 4,
-      "version": "7",
-      "when": 1720017297572,
-      "tag": "0004_optimal_jack_flag",
+      "when": 1720522182677,
+      "tag": "0000_yummy_preak",
       "breakpoints": true
     }
   ]

@@ -7,5 +7,6 @@ export default defineEventHandler(() => {
 		id,
 		email,
 		name: user_metadata.name,
+		avatar: user_metadata.avatar,
 	})
 })

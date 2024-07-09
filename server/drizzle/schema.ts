@@ -6,6 +6,7 @@ import {
 	json,
 	pgEnum,
 	boolean,
+	primaryKey,
 } from "drizzle-orm/pg-core"
 
 const defaultId = uuid("id").defaultRandom().notNull().primaryKey()
@@ -20,22 +21,43 @@ export const profiles = pgTable("profiles", {
 
 export type TranslatorDeepLConfig = { deepLKey: string }
 export const translatorEnum = pgEnum("translator", ["deepL"])
-export const translators = pgTable("translators", {
-	id: defaultId,
-	translator: translatorEnum("").notNull(),
-	invalidate: boolean("invalidate").default(false),
-	config: json("config").notNull().$type<TranslatorDeepLConfig>(),
-	profileId: uuid("profile_id").notNull(),
-})
+export const translators = pgTable(
+	"translators",
+	{
+		id: uuid("id").defaultRandom().notNull(),
+		translator: translatorEnum("translator").notNull(),
+		valid: boolean("valid").default(false),
+		config: json("config").notNull().$type<TranslatorDeepLConfig>(),
+		profileId: uuid("profile_id").notNull(),
+	},
+	(table) => {
+		return {
+			pk: primaryKey({
+				columns: [table.profileId, table.translator],
+			}),
+		}
+	},
+)
 
+export type AIEngineDeepSeekConfig = { deepSeekKey: string }
 export const aiEngineEnum = pgEnum("engine", ["deepSeek", "openAI"])
-export const aiEngines = pgTable("ai-engines", {
-	id: defaultId,
-	engine: aiEngineEnum("").notNull(),
-	invalidate: boolean("invalidate").default(false),
-	config: json("config").$type<{ [key: string]: string }>(),
-	profileId: uuid("profile_id").notNull(),
-})
+export const aiEngines = pgTable(
+	"ai-engines",
+	{
+		id: uuid("id").defaultRandom().notNull(),
+		engine: aiEngineEnum("engine").notNull(),
+		valid: boolean("valid").default(false),
+		config: json("config").$type<AIEngineDeepSeekConfig>(),
+		profileId: uuid("profile_id").notNull(),
+	},
+	(table) => {
+		return {
+			pk: primaryKey({
+				columns: [table.profileId, table.engine],
+			}),
+		}
+	},
+)
 
 // dictionary
 export const dictionary = pgTable("dictionary", {

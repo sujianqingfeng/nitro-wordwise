@@ -1,5 +1,5 @@
 {
-  "id": "6387ff1b-1d62-4fee-a724-851c2620bfde",
+  "id": "057f2eef-b02f-43ee-b570-87d46eb83ffc",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -11,19 +11,19 @@
         "id": {
           "name": "id",
           "type": "uuid",
-          "primaryKey": true,
+          "primaryKey": false,
           "notNull": true,
           "default": "gen_random_uuid()"
         },
-        "": {
-          "name": "",
+        "engine": {
+          "name": "engine",
           "type": "engine",
           "typeSchema": "public",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true
         },
-        "invalidate": {
-          "name": "invalidate",
+        "valid": {
+          "name": "valid",
           "type": "boolean",
           "primaryKey": false,
           "notNull": false,
@@ -44,7 +44,15 @@
       },
       "indexes": {},
       "foreignKeys": {},
-      "compositePrimaryKeys": {},
+      "compositePrimaryKeys": {
+        "ai-engines_profile_id_engine_pk": {
+          "name": "ai-engines_profile_id_engine_pk",
+          "columns": [
+            "profile_id",
+            "engine"
+          ]
+        }
+      },
       "uniqueConstraints": {}
     },
     "public.dictionary": {
@@ -62,7 +70,7 @@
           "name": "word",
           "type": "varchar(20)",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true
         },
         "sw": {
           "name": "sw",
@@ -177,19 +185,19 @@
         "id": {
           "name": "id",
           "type": "uuid",
-          "primaryKey": true,
+          "primaryKey": false,
           "notNull": true,
           "default": "gen_random_uuid()"
         },
-        "": {
-          "name": "",
+        "translator": {
+          "name": "translator",
           "type": "translator",
           "typeSchema": "public",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true
         },
-        "invalidate": {
-          "name": "invalidate",
+        "valid": {
+          "name": "valid",
           "type": "boolean",
           "primaryKey": false,
           "notNull": false,
@@ -199,7 +207,7 @@
           "name": "config",
           "type": "json",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true
         },
         "profile_id": {
           "name": "profile_id",
@@ -210,7 +218,15 @@
       },
       "indexes": {},
       "foreignKeys": {},
-      "compositePrimaryKeys": {},
+      "compositePrimaryKeys": {
+        "translators_profile_id_translator_pk": {
+          "name": "translators_profile_id_translator_pk",
+          "columns": [
+            "profile_id",
+            "translator"
+          ]
+        }
+      },
       "uniqueConstraints": {}
     },
     "public.words": {
@@ -228,7 +244,7 @@
           "name": "word",
           "type": "varchar(20)",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true
         },
         "simple_translate": {
           "name": "simple_translate",

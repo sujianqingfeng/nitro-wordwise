@@ -4,5 +4,4 @@ export default defineNitroConfig({
 	experimental: {
 		asyncContext: true,
 	},
-	errorHandler: "~/error",
 })

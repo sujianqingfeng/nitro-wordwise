@@ -1,31 +1,29 @@
-import { createInsertSchema } from "drizzle-zod"
 import { z } from "zod"
 import { useProfile } from "~/composables/profile"
-import { useZodValidBody } from "~/composables/validation"
 import db, { schema } from "~/lib/drizzle"
 
-const InsertTranslatorSchema = createInsertSchema(schema.translators, {
+const InsertTranslatorSchema = z.object({
 	config: z.object({
-		deepLKey: z.string(),
+		deepLKey: z.string().min(1),
 	}),
-}).omit({
-	profileId: true,
+	translator: z.enum(["deepL"]),
 })
 
-export default defineEventHandler(async () => {
-	const { data } = await useZodValidBody(InsertTranslatorSchema)
+export default defineEventHandler(async (e) => {
+	const body = await readValidatedBody(e, InsertTranslatorSchema.parse)
+
 	const { id } = await useProfile()
-	const { config } = data
+	const { config, translator } = body
 
 	const result = await db
 		.insert(schema.translators)
 		.values({
-			...data,
 			profileId: id,
 			config,
+			translator,
 		})
 		.onConflictDoUpdate({
-			target: schema.translators.id,
+			target: [schema.translators.profileId, schema.translators.translator],
 			set: {
 				config,
 			},

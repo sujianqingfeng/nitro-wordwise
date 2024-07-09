@@ -11,16 +11,17 @@ EXCEPTION
 END $$;
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "ai-engines" (
-	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
-	"" "engine",
-	"invalidate" boolean DEFAULT false,
+	"id" uuid DEFAULT gen_random_uuid() NOT NULL,
+	"engine" "engine" NOT NULL,
+	"valid" boolean DEFAULT false,
 	"config" json,
-	"profile_id" uuid NOT NULL
+	"profile_id" uuid NOT NULL,
+	CONSTRAINT "ai-engines_profile_id_engine_pk" PRIMARY KEY("profile_id","engine")
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "dictionary" (
 	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
-	"word" varchar(20),
+	"word" varchar(20) NOT NULL,
 	"sw" varchar(20),
 	"uk_phonetic" varchar(30),
 	"us_phonetic" varchar(30),
@@ -41,16 +42,17 @@ CREATE TABLE IF NOT EXISTS "profiles" (
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "translators" (
-	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
-	"" "translator",
-	"invalidate" boolean DEFAULT false,
-	"config" json,
-	"profile_id" uuid NOT NULL
+	"id" uuid DEFAULT gen_random_uuid() NOT NULL,
+	"translator" "translator" NOT NULL,
+	"valid" boolean DEFAULT false,
+	"config" json NOT NULL,
+	"profile_id" uuid NOT NULL,
+	CONSTRAINT "translators_profile_id_translator_pk" PRIMARY KEY("profile_id","translator")
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "words" (
 	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
-	"word" varchar(20),
+	"word" varchar(20) NOT NULL,
 	"simple_translate" varchar(100),
 	"user_id" uuid NOT NULL,
 	"create_at" timestamp DEFAULT now() NOT NULL,
