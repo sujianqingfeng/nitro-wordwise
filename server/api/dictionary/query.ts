@@ -11,6 +11,26 @@ const Schema = z.object({
 	word: z.string().min(1),
 })
 
+export default defineEventHandler(async () => {
+	const {
+		data: { word },
+	} = useZodValidQuery(Schema)
+
+	const local = await getLocalDictionary(word)
+
+	if (
+		local?.ukPhonetic &&
+		local.translations &&
+		local.translations?.length > 0
+	) {
+		return createBaseResponse(local)
+	}
+
+	const result = await dictionary.query(word)
+	saveDictionary(result)
+	return createBaseResponse(result)
+})
+
 async function getLocalDictionary(word: string) {
 	const first = await db.query.dictionary.findFirst({
 		where: eq(schema.dictionary.word, word),
@@ -92,23 +112,3 @@ async function saveDictionary(dict: IDictionaryQueryResult) {
 		logger.error(`saveDictionary failed: ${word}`, e)
 	}
 }
-
-export default defineEventHandler(async () => {
-	const {
-		data: { word },
-	} = useZodValidQuery(Schema)
-
-	const local = await getLocalDictionary(word)
-
-	if (
-		local?.ukPhonetic &&
-		local.translations &&
-		local.translations?.length > 0
-	) {
-		return createBaseResponse(local)
-	}
-
-	const result = await dictionary.query(word)
-	saveDictionary(result)
-	return createBaseResponse(result)
-})

@@ -1,19 +1,15 @@
 import { and, eq } from "drizzle-orm"
 import { createSelectSchema } from "drizzle-zod"
 import { useAuth } from "~/composables/auth"
-import { useZodValidBody } from "~/composables/validation"
 import db, { schema } from "~/lib/drizzle"
 
 const SelectSchema = createSelectSchema(schema.words).pick({
 	word: true,
 })
 
-export default defineEventHandler(async () => {
+export default defineEventHandler(async (e) => {
+	const { word } = await readValidatedBody(e, SelectSchema.parse)
 	const { id } = useAuth()
-
-	const {
-		data: { word },
-	} = await useZodValidBody(SelectSchema)
 
 	await db
 		.delete(schema.words)
