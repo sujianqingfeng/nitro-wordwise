@@ -39,15 +39,17 @@ export const translators = pgTable(
 	},
 )
 
-export type AIEngineDeepSeekConfig = { deepSeekKey: string }
-export const aiEngineEnum = pgEnum("engine", ["deepSeek", "openAI"])
+type AIEngineDeepSeekConfig = { apiKey: string }
+type AIEngineMoonshotConfig = { apiKey: string }
+export type AIEngineConfig = AIEngineDeepSeekConfig | AIEngineMoonshotConfig
+export const aiEngineEnum = pgEnum("engine", ["deepSeek", "moonshot"])
 export const aiEngines = pgTable(
-	"ai-engines",
+	"ai_engines",
 	{
 		id: uuid("id").defaultRandom().notNull(),
 		engine: aiEngineEnum("engine").notNull(),
 		valid: boolean("valid").default(false),
-		config: json("config").$type<AIEngineDeepSeekConfig>(),
+		config: json("config").notNull().$type<AIEngineConfig>(),
 		profileId: uuid("profile_id").notNull(),
 	},
 	(table) => {

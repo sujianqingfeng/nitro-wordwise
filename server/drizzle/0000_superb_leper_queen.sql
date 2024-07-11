@@ -1,5 +1,5 @@
 DO $$ BEGIN
- CREATE TYPE "public"."engine" AS ENUM('deepSeek', 'openAI');
+ CREATE TYPE "public"."engine" AS ENUM('deepSeek', 'moonshot');
 EXCEPTION
  WHEN duplicate_object THEN null;
 END $$;
@@ -10,13 +10,13 @@ EXCEPTION
  WHEN duplicate_object THEN null;
 END $$;
 --> statement-breakpoint
-CREATE TABLE IF NOT EXISTS "ai-engines" (
+CREATE TABLE IF NOT EXISTS "ai_engines" (
 	"id" uuid DEFAULT gen_random_uuid() NOT NULL,
 	"engine" "engine" NOT NULL,
 	"valid" boolean DEFAULT false,
-	"config" json,
+	"config" json NOT NULL,
 	"profile_id" uuid NOT NULL,
-	CONSTRAINT "ai-engines_profile_id_engine_pk" PRIMARY KEY("profile_id","engine")
+	CONSTRAINT "ai_engines_profile_id_engine_pk" PRIMARY KEY("profile_id","engine")
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "dictionary" (

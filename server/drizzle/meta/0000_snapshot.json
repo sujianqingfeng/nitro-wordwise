@@ -1,11 +1,11 @@
 {
-  "id": "057f2eef-b02f-43ee-b570-87d46eb83ffc",
+  "id": "0ef4d152-8a69-4f09-98c2-56dd6af2776f",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
-    "public.ai-engines": {
-      "name": "ai-engines",
+    "public.ai_engines": {
+      "name": "ai_engines",
       "schema": "",
       "columns": {
         "id": {
@@ -33,7 +33,7 @@
           "name": "config",
           "type": "json",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true
         },
         "profile_id": {
           "name": "profile_id",
@@ -45,8 +45,8 @@
       "indexes": {},
       "foreignKeys": {},
       "compositePrimaryKeys": {
-        "ai-engines_profile_id_engine_pk": {
-          "name": "ai-engines_profile_id_engine_pk",
+        "ai_engines_profile_id_engine_pk": {
+          "name": "ai_engines_profile_id_engine_pk",
           "columns": [
             "profile_id",
             "engine"
@@ -286,7 +286,7 @@
       "schema": "public",
       "values": [
         "deepSeek",
-        "openAI"
+        "moonshot"
       ]
     },
     "public.translator": {

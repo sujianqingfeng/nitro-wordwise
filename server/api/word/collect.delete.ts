@@ -14,4 +14,6 @@ export default defineEventHandler(async (e) => {
 	await db
 		.delete(schema.words)
 		.where(and(eq(schema.words.userId, id), eq(schema.words.word, word)))
+
+	return createBaseResponse()
 })

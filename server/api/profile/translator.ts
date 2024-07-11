@@ -1,17 +1,14 @@
 import { and, eq } from "drizzle-orm"
 import { createSelectSchema } from "drizzle-zod"
 import { useProfile } from "~/composables/profile"
-import { useZodValidQuery } from "~/composables/validation"
 import db, { schema } from "~/lib/drizzle"
 
 const SelectSchema = createSelectSchema(schema.translators).pick({
 	translator: true,
 })
 
-export default defineEventHandler(async () => {
-	const {
-		data: { translator },
-	} = useZodValidQuery(SelectSchema)
+export default defineEventHandler(async (e) => {
+	const { translator } = await getValidatedQuery(e, SelectSchema.parse)
 
 	const { id } = await useProfile()
 	const first = await db.query.translators.findFirst({

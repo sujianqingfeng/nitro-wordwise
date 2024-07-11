@@ -1,6 +1,5 @@
 import { eq } from "drizzle-orm"
 import { z } from "zod"
-import { useZodValidQuery } from "~/composables/validation"
 import db, { schema } from "~/lib/drizzle"
 import { dictionary } from "~/services/dictionary"
 import type { IDictionaryQueryResult } from "~/services/dictionary/provider.interface"
@@ -11,10 +10,8 @@ const Schema = z.object({
 	word: z.string().min(1),
 })
 
-export default defineEventHandler(async () => {
-	const {
-		data: { word },
-	} = useZodValidQuery(Schema)
+export default defineEventHandler(async (e) => {
+	const { word } = await getValidatedQuery(e, Schema.parse)
 
 	const local = await getLocalDictionary(word)
 

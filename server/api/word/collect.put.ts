@@ -24,4 +24,6 @@ export default defineEventHandler(async (e) => {
 		userId: id,
 		simpleTranslation: translation.translations?.[0].translation,
 	})
+
+	return createBaseResponse()
 })

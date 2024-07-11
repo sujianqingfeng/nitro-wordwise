@@ -4,7 +4,7 @@ import db, { schema } from "~/lib/drizzle"
 
 const InsertEngineSchema = z.object({
 	config: z.object({
-		deepSeekKey: z.string(),
+		apiKey: z.string(),
 	}),
 	engine: z.enum(["deepSeek"]),
 })
@@ -12,12 +12,12 @@ const InsertEngineSchema = z.object({
 const ConditionSchema = InsertEngineSchema.refine(
 	(data) => {
 		if (data.engine === "deepSeek") {
-			return data.config.deepSeekKey
+			return data.config.apiKey
 		}
 	},
 	{
 		message: "deepSeekKey is required for deepSeek engine",
-		path: ["config.deepSeekKey"],
+		path: ["config.apiKey"],
 	},
 )
 
