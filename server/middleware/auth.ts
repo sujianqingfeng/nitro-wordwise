@@ -14,7 +14,15 @@ export default defineEventHandler(async (e) => {
 			throw createError("No authorization")
 		}
 		const { data, error } = await supabase.auth.getUser(token)
+
 		if (error) {
+			if (error.status === 403) {
+				return createError({
+					message: "Unauthorized",
+					status: 401,
+				})
+			}
+
 			throw createError(error.message)
 		}
 		e.context.user = data.user
