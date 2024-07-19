@@ -18,3 +18,15 @@ export function createAiService(
 			return createDeepSeek(config)
 	}
 }
+
+export async function verifyAiService(
+	engine: typeof schema.aiEngines.$inferSelect.engine,
+	config: AIEngineConfig,
+) {
+	const result = await createAiService(engine, config).generateText({
+		system: "",
+		prompt: "hello",
+	})
+
+	return !!result
+}

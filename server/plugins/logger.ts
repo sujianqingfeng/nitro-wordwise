@@ -4,7 +4,7 @@ export default defineNitroPlugin((nitroApp) => {
 	})
 
 	nitroApp.hooks.hook("beforeResponse", (e) => {
-		const status = e.node.req.statusCode
+		const status = e.node.res.statusCode
 		console.log(`${e.method} ${e.path} ${status} `)
 	})
 })

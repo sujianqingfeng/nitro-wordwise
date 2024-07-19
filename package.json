@@ -7,7 +7,7 @@
 		"preview": "node .output/server/index.mjs",
 		"generate": "drizzle-kit generate",
 		"migrate": "drizzle-kit push",
-		"migrate:prod": "drizzle-kit push:pg --config drizzle.prod.config.ts",
+		"migrate:prod": "drizzle-kit push --config drizzle.prod.config.ts",
 		"studio": "drizzle-kit studio",
 		"dev:db": "sudo docker-compose up",
 		"test": "bun test"
@@ -15,16 +15,16 @@
 	"devDependencies": {
 		"@biomejs/biome": "^1.8.3",
 		"@types/bun": "^1.1.6",
-		"drizzle-kit": "^0.22.8",
+		"drizzle-kit": "^0.23.0",
 		"nitropack": "^2.9.7"
 	},
 	"dependencies": {
-		"@ai-sdk/google": "^0.0.25",
-		"@ai-sdk/openai": "^0.0.35",
-		"@supabase/supabase-js": "^2.44.3",
-		"ai": "^3.2.17",
+		"@ai-sdk/google": "^0.0.27",
+		"@ai-sdk/openai": "^0.0.37",
+		"@supabase/supabase-js": "^2.44.4",
+		"ai": "^3.2.32",
 		"consola": "^3.2.3",
-		"drizzle-orm": "^0.31.4",
+		"drizzle-orm": "^0.32.0",
 		"drizzle-zod": "^0.5.1",
 		"postgres": "^3.4.4",
 		"zod": "^3.23.8"

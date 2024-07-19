@@ -1,6 +1,8 @@
+import { eq } from "drizzle-orm"
 import { z } from "zod"
 import { useProfile } from "~/composables/profile"
 import db, { schema } from "~/lib/drizzle"
+import { verifyAiService } from "~/services/ai"
 
 const InsertEngineSchema = z.object({
 	config: z.object({
@@ -41,6 +43,12 @@ export default defineEventHandler(async (e) => {
 			},
 		})
 		.returning({ id: schema.aiEngines.id })
+
+	verifyAiService(engine, config).then((valid) => {
+		db.update(schema.aiEngines)
+			.set({ valid })
+			.where(eq(schema.aiEngines.id, result[0].id))
+	})
 
 	return result[0]
 })
