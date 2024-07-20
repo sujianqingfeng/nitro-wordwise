@@ -15,7 +15,7 @@
 	"devDependencies": {
 		"@biomejs/biome": "^1.8.3",
 		"@types/bun": "^1.1.6",
-		"drizzle-kit": "^0.23.0",
+		"drizzle-kit": "^0.22.8",
 		"nitropack": "^2.9.7"
 	},
 	"dependencies": {
@@ -24,7 +24,7 @@
 		"@supabase/supabase-js": "^2.44.4",
 		"ai": "^3.2.32",
 		"consola": "^3.2.3",
-		"drizzle-orm": "^0.32.0",
+		"drizzle-orm": "^0.31.4",
 		"drizzle-zod": "^0.5.1",
 		"postgres": "^3.4.4",
 		"zod": "^3.23.8"
