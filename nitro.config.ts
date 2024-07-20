@@ -4,4 +4,9 @@ export default defineNitroConfig({
 	experimental: {
 		asyncContext: true,
 	},
+	vercel: {
+		functions: {
+			maxDuration: 60,
+		},
+	},
 })
