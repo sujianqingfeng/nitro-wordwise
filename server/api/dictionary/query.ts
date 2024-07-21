@@ -1,4 +1,4 @@
-import { eq } from "drizzle-orm"
+import { and, eq, isNotNull } from "drizzle-orm"
 import { z } from "zod"
 import db, { schema } from "~/lib/drizzle"
 import { dictionary } from "~/services/dictionary"
@@ -20,7 +20,26 @@ export default defineEventHandler(async (e) => {
 		local.translations &&
 		local.translations?.length > 0
 	) {
-		return createBaseResponse(local)
+		const prototypes = await db.query.dictionary.findMany({
+			where: and(
+				eq(schema.dictionary.prototypeId, local.id),
+				isNotNull(schema.dictionary.formName),
+			),
+		})
+
+		const forms = prototypes.map((item) => {
+			return {
+				name: item.formName,
+				value: item.word,
+			}
+		})
+
+		const result = {
+			...local,
+			forms,
+		}
+
+		return createBaseResponse(result)
 	}
 
 	const result = await dictionary.query(word)
