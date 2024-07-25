@@ -1,5 +1,6 @@
 import { and, eq, isNotNull } from "drizzle-orm"
 import { z } from "zod"
+import { useAuth } from "~/composables/auth"
 import db, { schema } from "~/lib/drizzle"
 import { dictionary } from "~/services/dictionary"
 import type { IDictionaryQueryResult } from "~/services/dictionary/provider.interface"
@@ -14,6 +15,7 @@ export default defineEventHandler(async (e) => {
 	const { word } = await getValidatedQuery(e, Schema.parse)
 
 	const local = await getLocalDictionary(word)
+	const { id: userId } = useAuth()
 
 	if (
 		local?.ukPhonetic &&
@@ -38,14 +40,70 @@ export default defineEventHandler(async (e) => {
 			...local,
 			forms,
 		}
-
+		addQueryRecord({ userId, word, prototypeId: local.prototypeId })
 		return createBaseResponse(result)
 	}
 
 	const result = await dictionary.query(word)
 	saveDictionary(result)
+	const { prototype } = result
+	addQueryRecord({ userId, word, prototype })
 	return createBaseResponse(result)
 })
+
+async function addQueryRecord({
+	userId,
+	word,
+	prototype,
+	prototypeId,
+}: {
+	userId: string
+	word: string
+	prototype?: string
+	prototypeId?: string | null
+}) {
+	if (prototypeId) {
+		const r = await db.query.dictionary.findFirst({
+			where: eq(schema.dictionary.id, prototypeId),
+		})
+		if (r) {
+			prototype = r.word
+		}
+	}
+
+	if (!prototype) {
+		prototype = word
+	}
+
+	const where = and(
+		eq(schema.queryRecords.word, word),
+		eq(schema.queryRecords.userId, userId),
+	)
+
+	const ifExistRecord = await db.query.queryRecords.findFirst({
+		where,
+	})
+
+	if (ifExistRecord) {
+		db.update(schema.queryRecords)
+			.set({
+				count: ifExistRecord.count + 1,
+				prototype,
+			})
+			.where(where)
+			.execute()
+		return
+	}
+
+	db.insert(schema.queryRecords)
+		.values({
+			word,
+			userId,
+			prototype,
+			count: 1,
+		})
+		.execute()
+}
 
 async function getLocalDictionary(word: string) {
 	const first = await db.query.dictionary.findFirst({

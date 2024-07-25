@@ -7,10 +7,15 @@ import {
 	pgEnum,
 	boolean,
 	primaryKey,
+	integer,
 } from "drizzle-orm/pg-core"
 
 const defaultId = uuid("id").defaultRandom().notNull().primaryKey()
 const createAt = timestamp("create_at", { mode: "date" }).notNull().defaultNow()
+const updateAt = timestamp("update_at", { mode: "date" })
+	.notNull()
+	.defaultNow()
+	.$onUpdate(() => new Date())
 
 // profiles
 export const profiles = pgTable("profiles", {
@@ -29,6 +34,7 @@ export const translators = pgTable(
 		valid: boolean("valid").default(false),
 		config: json("config").notNull().$type<TranslatorDeepLConfig>(),
 		profileId: uuid("profile_id").notNull(),
+		updateAt,
 	},
 	(table) => {
 		return {
@@ -51,6 +57,7 @@ export const aiEngines = pgTable(
 		valid: boolean("valid").default(false),
 		config: json("config").notNull().$type<AIEngineConfig>(),
 		profileId: uuid("profile_id").notNull(),
+		updateAt,
 	},
 	(table) => {
 		return {
@@ -86,8 +93,17 @@ export const words = pgTable("words", {
 	id: defaultId,
 	word: varchar("word", { length: 20 }).unique().notNull(),
 	simpleTranslation: varchar("simple_translate", { length: 100 }),
-
 	userId: uuid("user_id").notNull(),
-
 	createAt,
+})
+
+// query_records
+export const queryRecords = pgTable("query_records", {
+	id: defaultId,
+	word: varchar("word", { length: 20 }).notNull(),
+	prototype: varchar("prototype", { length: 20 }),
+	userId: uuid("user_id").notNull(),
+	count: integer("count").notNull().default(0),
+	createAt,
+	updateAt,
 })

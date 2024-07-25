@@ -69,6 +69,7 @@ export class YouDaoDictionaryService implements IDictionaryProvider {
 		}
 
 		const { ec } = data
+
 		const {
 			word: {
 				usphone: usPhonetic = "",
@@ -78,7 +79,7 @@ export class YouDaoDictionaryService implements IDictionaryProvider {
 				trs = [],
 				wfs = [],
 				prototype = "",
-			},
+			} = {},
 			exam_type = [],
 		} = ec
 
