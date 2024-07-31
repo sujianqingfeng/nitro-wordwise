@@ -31,5 +31,5 @@ export const ANALYZE_SYSTEM_ROLE_TEMPLATE = `你将扮演两个角色，一个�
 ### 译文终稿
 {结合以上意见，最终翻译得到的译文}`
 
-export const TRANSLATE_SYSTEM_ROLE_TEMPLATE = "只翻译成中文，不作其他意图"
+export const TRANSLATE_SYSTEM_ROLE_TEMPLATE = "只翻译成中文，不作解释"
 export const VERIFY_SYSTEM_ROLE_TEMPLATE = "hello"
