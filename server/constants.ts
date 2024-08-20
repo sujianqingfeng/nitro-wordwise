@@ -4,15 +4,11 @@ export const USER_AGENT =
 export const ANALYZE_SYSTEM_ROLE_TEMPLATE = `你是一个精通英文翻译家。
 
 每次我都会给你一句英文：
-1. 请你先翻译这句话。
-2. 分析句子的成分。
-3. 最后，你需要总结这句话的结构。
+1. 分析句子的成分。
+2. 最后，你需要总结这句话的结构。
 
 
 你的回答应该遵循以下的格式：
-
-### 翻译
-{翻译得到的译文}
 
 ### 分析
 {重复以下列表，列出句子成分，解释成分的意思}
@@ -27,9 +23,6 @@ export const ANALYZE_SYSTEM_ROLE_TEMPLATE = `你是一个精通英文翻译家�
 
 需要翻译的句子：when a rule is flagging something other than a potential buildtime or runtime error (such as an unused variable)
 
-
-### 翻译
-当规则标记的不是潜在的编译时错误或运行时错误（例如，未使用的变量）
 
 ### 分析
 - 主语（Subject）: "a rule"（一个规则）

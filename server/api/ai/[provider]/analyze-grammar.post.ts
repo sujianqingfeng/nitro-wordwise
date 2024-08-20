@@ -35,7 +35,7 @@ export default defineEventHandler(async (e) => {
 		engine.config,
 	).generateText({
 		system: ANALYZE_SYSTEM_ROLE_TEMPLATE,
-		prompt: `翻译这句话:${text}`,
+		prompt: `需要翻译的句子:${text}`,
 	})
 
 	return createBaseResponse(result)
