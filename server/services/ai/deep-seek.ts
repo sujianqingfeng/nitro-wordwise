@@ -1,5 +1,5 @@
 import { createOpenAI } from "@ai-sdk/openai"
-import { generateText as aiGenerateText } from "ai"
+import { generateText as aiGenerateText, streamText as aiStreamText } from "ai"
 import type { IAIProvider } from "./provider.interface"
 
 const API_BASE_URL = "https://api.deepseek.com"
@@ -18,6 +18,15 @@ const createDeepSeek: IAIProvider<{ apiKey: string }> = ({ apiKey }) => {
 				prompt,
 			})
 			return text
+		},
+		streamText: async ({ system, prompt }) => {
+			const { textStream } = await aiStreamText({
+				model: openai("deepseek-chat"),
+				system,
+				prompt,
+			})
+
+			return textStream
 		},
 	}
 }

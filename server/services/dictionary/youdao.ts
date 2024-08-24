@@ -68,6 +68,10 @@ export class YouDaoDictionaryService implements IDictionaryProvider {
 			throw new Error("YouDaoDictionaryService.query failed")
 		}
 
+		if (!data) {
+			throw new Error("YouDaoDictionaryService.query failed")
+		}
+
 		const { ec } = data
 
 		const {
