@@ -35,5 +35,6 @@ export const ANALYZE_SYSTEM_ROLE_TEMPLATE = `你是一个精通英文翻译家�
 主语 + 谓语 + 宾语 + 定语从句 + 插入语
 `
 
-export const TRANSLATE_SYSTEM_ROLE_TEMPLATE = "将下面的内容翻译成中文"
+export const TRANSLATE_SYSTEM_ROLE_TEMPLATE =
+	"你是一个翻译大师，将下面的内容翻译成中文"
 export const VERIFY_SYSTEM_ROLE_TEMPLATE = "hello"

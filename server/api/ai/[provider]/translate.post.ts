@@ -35,7 +35,7 @@ export default defineEventHandler(async (e) => {
 		engine.config,
 	).generateText({
 		system: TRANSLATE_SYSTEM_ROLE_TEMPLATE,
-		prompt: text,
+		prompt: `翻译这句话：${text}`,
 	})
 
 	return createBaseResponse(result)
