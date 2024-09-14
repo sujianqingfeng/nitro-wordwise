@@ -4,7 +4,7 @@ const WHITE_LIST = ["/api/auth"]
 
 export default defineEventHandler(async (e) => {
 	const { pathname } = getRequestURL(e)
-	if (!WHITE_LIST.some((s) => pathname.startsWith(s))) {
+	if (!WHITE_LIST.some((s) => pathname.startsWith(s)) && pathname !== "/") {
 		const authorization = getHeader(e, "Authorization")
 		if (!authorization) {
 			throw createError("No authorization")
