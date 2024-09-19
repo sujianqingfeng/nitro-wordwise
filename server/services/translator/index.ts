@@ -1,5 +1,6 @@
 import type { schema } from "~/lib/drizzle"
 import deepLTranslator from "./deepL"
+import deepLXTranslator from "./deepLX"
 import type { TranslatorDeepLConfig } from "~/drizzle/schema"
 
 export function createTranslatorService(
@@ -9,6 +10,9 @@ export function createTranslatorService(
 	switch (translator) {
 		case "deepL":
 			return deepLTranslator(config)
+
+		case "deepLX":
+			return deepLXTranslator(config)
 
 		default:
 			return deepLTranslator(config)

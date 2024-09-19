@@ -9,7 +9,7 @@ const TranslateSchema = z.object({
 })
 
 const ProviderSchema = z.object({
-	provider: z.enum(["deepL"]),
+	provider: z.enum(["deepL", "deepLX"]),
 })
 
 export default defineEventHandler(async (e) => {

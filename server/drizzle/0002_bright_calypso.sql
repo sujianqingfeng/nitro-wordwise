@@ -1,0 +1,1 @@
+ALTER TYPE "translator" ADD VALUE 'deepLX';

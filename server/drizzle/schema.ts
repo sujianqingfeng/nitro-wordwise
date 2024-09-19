@@ -25,7 +25,7 @@ export const profiles = pgTable("profiles", {
 })
 
 export type TranslatorDeepLConfig = { deepLKey: string }
-export const translatorEnum = pgEnum("translator", ["deepL"])
+export const translatorEnum = pgEnum("translator", ["deepL", "deepLX"])
 export const translators = pgTable(
 	"translators",
 	{

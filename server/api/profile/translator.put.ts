@@ -6,7 +6,7 @@ const InsertTranslatorSchema = z.object({
 	config: z.object({
 		deepLKey: z.string().min(1),
 	}),
-	translator: z.enum(["deepL"]),
+	translator: z.enum(["deepL", "deepLX"]),
 })
 
 export default defineEventHandler(async (e) => {
