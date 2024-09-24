@@ -18,7 +18,8 @@ export const ANALYZE_SYSTEM_ROLE_TEMPLATE = `你是一个精通英文翻译家�
 {句子结构}
 
 ### 短语和固定搭配
-{短语或固定搭配}:{短语或固定搭配的英文翻译}{1...n}
+{重复以下列表，列出短语或固定搭配，解释短语或固定搭配的意思}
+- {短语或固定搭配}:{短语或固定搭配的英文翻译}{1...n}
 
 下面是一个例子：
 
@@ -39,8 +40,8 @@ export const ANALYZE_SYSTEM_ROLE_TEMPLATE = `你是一个精通英文翻译家�
 主语 + 谓语 + 宾语 + 定语从句 + 插入语
 
 ### 短语和固定搭配
-something other than: 除了...之外的某物
-such as: 例如
+- something other than: 除了...之外的某物
+- such as: 例如
 `
 
 export const TRANSLATE_SYSTEM_ROLE_TEMPLATE =
