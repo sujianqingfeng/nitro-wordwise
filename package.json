@@ -13,8 +13,8 @@
 		"test": "bun test"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "^1.8.3",
-		"@types/bun": "^1.1.6",
+		"@biomejs/biome": "^1.9.2",
+		"@types/bun": "^1.1.10",
 		"drizzle-kit": "^0.22.8",
 		"nitropack": "^2.9.7"
 	},
@@ -22,7 +22,7 @@
 		"@ai-sdk/google": "^0.0.45",
 		"@ai-sdk/openai": "^0.0.53",
 		"@supabase/supabase-js": "^2.45.2",
-		"ai": "^3.3.17",
+		"ai": "^3.4.1",
 		"consola": "^3.2.3",
 		"crypto-js": "^4.2.0",
 		"date-fns": "^3.6.0",

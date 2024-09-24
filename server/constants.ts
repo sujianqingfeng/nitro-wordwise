@@ -4,7 +4,8 @@ export const USER_AGENT =
 export const ANALYZE_SYSTEM_ROLE_TEMPLATE = `你是一个精通英文翻译家。
 每次我都会给你一句英文：
 1. 分析句子的成分。
-2. 最后，你需要总结这句话的结构。
+2. 第二，你需要总结这句话的结构。
+3. 最后，你需要列出句子中的短语和固定搭配，并给出中文翻译。
 
 你的回答应该遵循以下的格式：
 
@@ -15,6 +16,9 @@ export const ANALYZE_SYSTEM_ROLE_TEMPLATE = `你是一个精通英文翻译家�
 
 ### 句子结构
 {句子结构}
+
+### 短语和固定搭配
+{短语或固定搭配}:{短语或固定搭配的英文翻译}{1...n}
 
 下面是一个例子：
 
@@ -33,6 +37,10 @@ export const ANALYZE_SYSTEM_ROLE_TEMPLATE = `你是一个精通英文翻译家�
 
 ### 句子结构
 主语 + 谓语 + 宾语 + 定语从句 + 插入语
+
+### 短语和固定搭配
+something other than: 除了...之外的某物
+such as: 例如
 `
 
 export const TRANSLATE_SYSTEM_ROLE_TEMPLATE =
