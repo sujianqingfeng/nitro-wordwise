@@ -13,17 +13,19 @@ const deepLXTranslator: ITranslatorProvider<TranslatorDeepLConfig> = ({
 	deepLKey,
 }) => {
 	const translate = async (text: string) => {
-		const data = await $fetch<DeepLResp>(`${FREE_API_DOMAIN}/v2/translate`, {
-			method: "POST",
-			body: {
-				text: [text],
-				target_lang: "ZH",
+		const data = await $fetch<DeepLResp>(
+			`${FREE_API_DOMAIN}/v2/translate?key=${deepLKey}`,
+			{
+				method: "POST",
+				body: {
+					text: [text],
+					target_lang: "ZH",
+				},
+				headers: {
+					"Content-Type": "application/json",
+				},
 			},
-			headers: {
-				Authorization: `DeepL-Auth-Key ${deepLKey}`,
-				"Content-Type": "application/json",
-			},
-		})
+		)
 
 		const { translations } = data
 		let result = ""
