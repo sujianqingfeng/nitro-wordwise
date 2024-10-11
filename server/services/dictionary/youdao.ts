@@ -10,8 +10,8 @@ const DICT_URL = "https://dict.youdao.com/jsonapi_s?doctype=json&jsonversion=4"
 const KEY_FROM = "webdict"
 
 type YouDaoResp = {
-	ec: {
-		word?: {
+	ec?: {
+		word: {
 			usphone: string
 			ukphone: string
 			ukspeech: string
@@ -74,7 +74,7 @@ export class YouDaoDictionaryService implements IDictionaryProvider {
 
 		const { ec } = data
 
-		if (!ec.word) {
+		if (!ec) {
 			throw new Error("query failed")
 		}
 
