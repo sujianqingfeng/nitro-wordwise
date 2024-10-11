@@ -11,7 +11,7 @@ const KEY_FROM = "webdict"
 
 type YouDaoResp = {
 	ec: {
-		word: {
+		word?: {
 			usphone: string
 			ukphone: string
 			ukspeech: string
@@ -65,14 +65,18 @@ export class YouDaoDictionaryService implements IDictionaryProvider {
 		)
 
 		if (error) {
-			throw new Error("YouDaoDictionaryService.query failed")
+			throw new Error("query failed")
 		}
 
 		if (!data) {
-			throw new Error("YouDaoDictionaryService.query failed")
+			throw new Error("query failed")
 		}
 
 		const { ec } = data
+
+		if (!ec.word) {
+			throw new Error("query failed")
+		}
 
 		const {
 			word: {
@@ -83,7 +87,7 @@ export class YouDaoDictionaryService implements IDictionaryProvider {
 				trs = [],
 				wfs = [],
 				prototype = "",
-			} = {},
+			},
 			exam_type = [],
 		} = ec
 
