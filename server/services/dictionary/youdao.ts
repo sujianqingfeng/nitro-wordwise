@@ -64,18 +64,19 @@ export class YouDaoDictionaryService implements IDictionaryProvider {
 			},
 		)
 
+		const e = createError("query failed")
 		if (error) {
-			throw new Error("query failed")
+			throw e
 		}
 
 		if (!data) {
-			throw new Error("query failed")
+			throw e
 		}
 
 		const { ec } = data
 
 		if (!ec) {
-			throw new Error("query failed")
+			throw e
 		}
 
 		const {
