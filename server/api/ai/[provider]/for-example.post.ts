@@ -1,13 +1,13 @@
 import { and, eq } from "drizzle-orm"
 import { z } from "zod"
 import { useProfile } from "~/composables/profile"
-import { ANALYZE_SYSTEM_ROLE_TEMPLATE } from "~/constants"
+import { FOR_EXAMPLE_SYSTEM_ROLE_TEMPLATE } from "~/constants"
 import db, { schema } from "~/lib/drizzle"
 import { createAiService } from "~/services/ai"
 import { readTextStreamToH3EventStream } from "~/utils/stream"
 
-const AnalyzeSchema = z.object({
-	text: z.string().min(1),
+const ForExampleSchema = z.object({
+	word: z.string().min(1),
 })
 
 const ProviderSchema = z.object({
@@ -16,7 +16,7 @@ const ProviderSchema = z.object({
 
 export default defineEventHandler(async (e) => {
 	const { provider } = await getValidatedRouterParams(e, ProviderSchema.parse)
-	const { text } = await readValidatedBody(e, AnalyzeSchema.parse)
+	const { word } = await readValidatedBody(e, ForExampleSchema.parse)
 
 	const { id } = await useProfile()
 
@@ -35,8 +35,8 @@ export default defineEventHandler(async (e) => {
 		engine.engine,
 		engine.config,
 	).streamText({
-		system: ANALYZE_SYSTEM_ROLE_TEMPLATE,
-		prompt: `需要翻译的句子:${text}`,
+		system: FOR_EXAMPLE_SYSTEM_ROLE_TEMPLATE,
+		prompt: `需要举出例句的单词:${word}`,
 	})
 
 	const eventStream = createEventStream(e)

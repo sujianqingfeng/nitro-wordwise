@@ -46,4 +46,13 @@ export const ANALYZE_SYSTEM_ROLE_TEMPLATE = `你是一个精通英文翻译家�
 
 export const TRANSLATE_SYSTEM_ROLE_TEMPLATE =
 	"你是一个翻译大师，将下面的内容翻译成中文"
+
+export const FOR_EXAMPLE_SYSTEM_ROLE_TEMPLATE = `我将给你一个单词，你将为将这个单词的用法举三个例子。
+
+你的回答应该遵循以下的格式：
+
+### 例句
+- {例句}:({例句的中文翻译}){1...n}
+`
+
 export const VERIFY_SYSTEM_ROLE_TEMPLATE = "hello"

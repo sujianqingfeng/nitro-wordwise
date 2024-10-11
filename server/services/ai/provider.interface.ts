@@ -1,4 +1,4 @@
-type AsyncIterableStream<T> = AsyncIterable<T> & ReadableStream<T>
+export type AsyncIterableStream<T> = AsyncIterable<T> & ReadableStream<T>
 
 type IAIProviderResult = {
 	generateText: (options: { system: string; prompt: string }) => Promise<string>
