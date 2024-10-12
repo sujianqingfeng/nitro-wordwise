@@ -1,0 +1,1 @@
+ALTER TABLE "words" ALTER COLUMN "simple_translate" SET DATA TYPE varchar(300);
