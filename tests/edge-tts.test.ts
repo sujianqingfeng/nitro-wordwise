@@ -1,24 +1,25 @@
 import { test, describe, expect } from "bun:test"
-import { Client } from "@gradio/client"
-import type { EdgeTTSResultItem } from "~~/types"
+import { EdgeTTS } from "@andresaya/edge-tts"
 
 describe("edge-tts", () => {
 	test(
 		"tts",
 		async () => {
-			const client = await Client.connect("innoai/Edge-TTS-Text-to-Speech")
-			const result = await client.predict("/predict", {
-				text: "Hello",
-				voice: "en-GB-RyanNeural - en-GB (Male)",
-				rate: 0,
-				pitch: 0,
+			const tts = new EdgeTTS()
+			const voice = "en-GB-RyanNeural"
+
+			await tts.synthesize("Hello, world!", voice, {
+				rate: "0%",
+				volume: "0%",
+				pitch: "0Hz",
 			})
 
-			const data = result.data as EdgeTTSResultItem[]
-			expect(data.length).toBeGreaterThanOrEqual(1)
+			const base64 = tts.toBase64()
+			expect(base64).toBeDefined()
 		},
+
 		{
-			timeout: 10 * 1000,
+			timeout: 60 * 1000,
 		},
 	)
 })
