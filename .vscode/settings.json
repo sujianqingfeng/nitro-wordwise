@@ -25,6 +25,8 @@
 		"biomejs",
 		"composables",
 		"deepseek",
+		"gradio",
+		"innoai",
 		"keyfrom",
 		"nitropack",
 		"openai",
