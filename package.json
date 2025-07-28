@@ -15,20 +15,20 @@
 	"devDependencies": {
 		"@biomejs/biome": "^1.9.2",
 		"@types/bun": "^1.1.10",
-		"drizzle-kit": "^0.24.2",
+		"drizzle-kit": "^0.31.4",
 		"nitropack": "^2.9.7"
 	},
 	"dependencies": {
 		"@ai-sdk/google": "^0.0.49",
 		"@ai-sdk/openai": "^0.0.62",
 		"@andresaya/edge-tts": "^1.2.4",
-		"@supabase/supabase-js": "^2.45.4",
+		"@supabase/supabase-js": "^2.52.1",
 		"ai": "^3.4.1",
 		"consola": "^3.2.3",
 		"crypto-js": "^4.2.0",
 		"date-fns": "^4.1.0",
-		"drizzle-orm": "^0.33.0",
-		"drizzle-zod": "^0.5.1",
+		"drizzle-orm": "^0.44.3",
+		"drizzle-zod": "^0.8.2",
 		"postgres": "^3.4.4",
 		"zod": "^3.23.8"
 	}

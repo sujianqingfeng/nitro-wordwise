@@ -8,7 +8,9 @@ const SelectSchema = createSelectSchema(schema.aiEngines).pick({
 })
 
 export default defineEventHandler(async (e) => {
-	const { engine } = await getValidatedQuery(e, SelectSchema.parse)
+	const { engine } = await getValidatedQuery(e, (query) =>
+		SelectSchema.parse(query),
+	)
 
 	const { id } = await useProfile()
 	const first = await db.query.aiEngines.findFirst({

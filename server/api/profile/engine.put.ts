@@ -8,17 +8,21 @@ const InsertEngineSchema = z.object({
 	config: z.object({
 		apiKey: z.string(),
 	}),
-	engine: z.enum(["deepSeek"]),
+	engine: z.enum(["deepSeek", "moonshot", "openai"]),
 })
 
 const ConditionSchema = InsertEngineSchema.refine(
 	(data) => {
-		if (data.engine === "deepSeek") {
+		if (
+			data.engine === "deepSeek" ||
+			data.engine === "moonshot" ||
+			data.engine === "openai"
+		) {
 			return data.config.apiKey
 		}
 	},
 	{
-		message: "deepSeekKey is required for deepSeek engine",
+		message: "apiKey is required",
 		path: ["config.apiKey"],
 	},
 )
