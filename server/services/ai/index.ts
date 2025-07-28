@@ -2,6 +2,7 @@ import type { schema } from "~/lib/drizzle"
 import createDeepSeek from "./deep-seek"
 import createMoonshot from "./moonshot"
 import type { AIEngineConfig } from "~/drizzle/schema"
+import createOpenAI from "./openai"
 
 export function createAiService(
 	engine: typeof schema.aiEngines.$inferSelect.engine,
@@ -13,6 +14,9 @@ export function createAiService(
 
 		case "moonshot":
 			return createMoonshot(config)
+
+		case "openai":
+			return createOpenAI(config)
 
 		default:
 			return createDeepSeek(config)

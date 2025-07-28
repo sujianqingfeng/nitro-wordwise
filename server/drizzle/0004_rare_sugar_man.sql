@@ -1,0 +1,1 @@
+ALTER TYPE "engine" ADD VALUE 'openai';

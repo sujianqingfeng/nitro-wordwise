@@ -47,8 +47,12 @@ export const translators = pgTable(
 
 type AIEngineDeepSeekConfig = { apiKey: string }
 type AIEngineMoonshotConfig = { apiKey: string }
-export type AIEngineConfig = AIEngineDeepSeekConfig | AIEngineMoonshotConfig
-export const aiEngineEnum = pgEnum("engine", ["deepSeek", "moonshot"])
+type AIEngineOpenAIConfig = { apiKey: string }
+export type AIEngineConfig =
+	| AIEngineDeepSeekConfig
+	| AIEngineMoonshotConfig
+	| AIEngineOpenAIConfig
+export const aiEngineEnum = pgEnum("engine", ["deepSeek", "moonshot", "openai"])
 export const aiEngines = pgTable(
 	"ai_engines",
 	{
