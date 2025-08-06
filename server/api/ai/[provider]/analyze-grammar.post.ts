@@ -10,7 +10,7 @@ const AnalyzeSchema = z.object({
 })
 
 const ProviderSchema = z.object({
-	provider: z.enum(["deepSeek"]),
+	provider: z.enum(["deepSeek", "moonshot", "openai"]),
 })
 
 export default defineEventHandler(async (e) => {
